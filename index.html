@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+   <script type="text/javascript" src="app.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css">
+    <link href="https://fonts.googleapis.com/css2?family=Bubblegum+Sans&display=swap" rel="stylesheet">
+    <script
+    src="https://code.jquery.com/jquery-3.5.1.js"
+    integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
+    crossorigin="anonymous"></script>
+   
+    <title>Todo App</title>
+</head>
+<body>
+           
+    <div id="container">
+        <h1>My To Do List</h1>
+        <input type="text" placeholder="Add New">
+         
+     <ul>
+        <li>Online Classes<span><i class="fa fa-trash"></i></span></li>
+        <li class="checked">Assignment of WebDesigning   <span> <i class="fa fa-trash"></i></span></li>
+        <li>Shop<span><i class="fa fa-trash"></i> </span>e</li>
+        <li>Walking  <span><i class="fa fa-trash"></i> </span></li>
+        <li>Meet Friend<span><i class="fa fa-trash"></i> </span></li>
+        <li>Organize office  <span><i class="fa fa-trash"></i> </span></li>
+      </ul>
+    </div> 
+</body>
+</html>
+<script>
+  $('input').keypress(function(event){
+	if(event.which === 13){
+		var todoText = $(this).val();
+		$(this).val("");
+		$('ul').append('<li>' + todoText + '<span><i class="fa fa-trash"</i></span>');
+	}
+});
+$('ul').on('click', "span" , function(event){
+	$(this).parent().fadeOut(500,function(){
+		$(this).remove();
+	});
+	event.stopPropagation();
+});
+$('ul').on('click', 'li', function(){
+	$(this).toggleClass('done');
+});
+
+</script>
+
+
+
